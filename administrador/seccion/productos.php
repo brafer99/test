@@ -30,6 +30,7 @@ switch($var_accion){
 
         $sentencia_sql->bindParam(':param_imagen',$nombre_archivo);
         $sentencia_sql->execute();
+        header("Location:productos.php");
         break;
 
     case "Modificar":
@@ -70,11 +71,12 @@ switch($var_accion){
             $sentencia_sql->bindParam(':param_id',$var_txt_id);
             $sentencia_sql->execute();
         }
+        header("Location:productos.php");
         break;
 
     case "Cancelar":
 
-        echo "Presionado Boton Cancelar";
+        header("Location:productos.php");
         break;
 
     case "Seleccionar":
@@ -112,7 +114,7 @@ switch($var_accion){
         $sentencia_sql->bindParam(':param_id',$var_txt_id);
         $sentencia_sql->execute();
         //echo "Presionado Boton Borrar";
-        
+        header("Location:productos.php");  
         break;
 }
 
@@ -182,7 +184,8 @@ $lista_libros = $sentencia_sql->fetchAll(PDO::FETCH_ASSOC)
             <?php foreach($lista_libros as $libro) { ?>
             
             <tr>
-                <td><?php echo $libro['sql_libro_id']; ?></td>
+                
+                <td><?php echo $libro['sql_libro_id']?></td>
                 <td><?php echo $libro['sql_libro_nombre']; ?></td>
 
                 <td>
@@ -207,7 +210,7 @@ $lista_libros = $sentencia_sql->fetchAll(PDO::FETCH_ASSOC)
                 </td>
             </tr>
             
-            <?php }?>
+            <?php  }?>
 
         </tbody>
     </table>
